@@ -1,0 +1,111 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="RBVS">
+    <meta name="generator" content="Rbvs">
+    <title>Evaluación de Desempeño Docente - Ciclo Escolar 2021-2022</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+<main>
+  <div class="container py-4">
+    <header class="pb-3 mb-4 border-bottom">
+      <a href="https://www.chmd.edu.mx/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Colegio</span>
+      </a>
+    </header>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">EVALUACIÓN DESEMPEÑO DOCENTE CICLO ESCOLAR 2021-2022</h1>
+        <p class="col-md-8 fs-4">XXXXX</p>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-12">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+
+
+
+
+<div class="list-group">
+  <label class="list-group-item d-flex gap-3">
+    
+    <span class="pt-1 form-checked-content">
+      <strong><a href="{{objeto.url_survey}}={{objeto.id_survey}}">{{objeto.evaluado.nombre}}</a></strong>
+      <small class="d-block text-muted">
+        Pendiente
+      </small>
+    </span>
+  </label>
+  <label class="list-group-item d-flex gap-3">
+    
+    <span class="pt-1 form-checked-content">
+      <strong><a href="{{objeto.url_survey}}={{objeto.id_survey}}">{{objeto.evaluado.nombre}}</a></strong>
+      <small class="d-block text-muted">
+        Pendiente
+      </small>
+    </span>
+  </label>
+  <label class="list-group-item d-flex gap-3">
+    
+    <span class="pt-1 form-checked-content">
+      <strong><a href="{{objeto.url_survey}}={{objeto.id_survey}}">{{objeto.evaluado.nombre}}</a></strong>
+      <small class="d-block text-muted">
+        Pendiente
+      </small>
+    </span>
+  </label>
+  <label class="list-group-item d-flex gap-3 bg-light">
+    <span class="pt-1 form-checked-content">
+      <span contenteditable="true" class="w-100">
+
+
+
+      XXXXX</span>
+      <small class="d-block text-muted">
+        Calificado
+      </small>
+    </span>
+  </label>
+</div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+      &copy; 2021
+    </footer>
+  </div>
+</main>
+
+
+    
+  </body>
+</html>
