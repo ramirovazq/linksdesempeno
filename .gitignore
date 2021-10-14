@@ -114,3 +114,4 @@ dmypy.json
 db.sqlite3
 *.csv
 *.xlsx
+*.zip
