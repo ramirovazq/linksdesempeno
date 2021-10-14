@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class ProfesorEvaluado(models.Model):
@@ -14,6 +15,9 @@ class Evaluador(models.Model):
     evaluado = models.ForeignKey(ProfesorEvaluado, on_delete=models.CASCADE)
     id_survey = models.CharField(max_length=300, blank=True)
     slug = models.SlugField(max_length=50, blank=True, null=True)
+
+    def url_survey(self):
+        return settings.URL_SURVEY + self.id_survey
 
     def __str__(self):
         return f"nombre o gpo: {self.nombre_o_grupo}, autoevaluacion: {self.autoevaluacion}, evaluado {self.evaluado}"

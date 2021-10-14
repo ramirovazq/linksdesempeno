@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,8 +126,9 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-URL_API = "********"
+URL_API = os.getenv("URL_API", None)
 
-USERNAME_API = "******"
-PASSWORD_API = "******"
-SURVEYID2COPY = "*****"
+USERNAME_API = os.getenv("USERNAME_API", None)
+PASSWORD_API = os.getenv("PASSWORD_API", None)
+SURVEYID2COPY = os.getenv("SURVEYID2COPY", None)
+URL_SURVEY = os.getenv("URL_SURVEY", None)
