@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
 from docentes.models import Evaluador
+from django.conf import settings
 
 
 def index(request):
@@ -12,6 +12,9 @@ def detail(request, slug_evaluador):
     if len(list_evaluaciones) > 0:
         evaluador = list_evaluaciones[0]
     context = {'objetos': list_evaluaciones, 'objeto': evaluador}
+    context['COLLEGE_NAME'] = settings.COLLEGE_NAME
+    context['COLLEGE_URL'] = settings.COLLEGE_URL
+    context['COLLEGE_INSTRUMENT'] = settings.COLLEGE_INSTRUMENT
     return render(request, 'docentes/detail.html', context)
 
 def list(request):
@@ -23,4 +26,7 @@ def list(request):
             memo_list.append(evaluador.nombre_o_grupo)
             objetos.append(evaluador)
     context = {'objetos': objetos}
+    context['COLLEGE_NAME'] = settings.COLLEGE_NAME
+    context['COLLEGE_URL'] = settings.COLLEGE_URL
+    context['COLLEGE_INSTRUMENT'] = settings.COLLEGE_INSTRUMENT
     return render(request, 'docentes/list.html', context)
