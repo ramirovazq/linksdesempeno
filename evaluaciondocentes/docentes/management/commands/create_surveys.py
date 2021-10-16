@@ -18,8 +18,11 @@ class Command(BaseCommand):
             if not evaluador.id_survey:
                 grupo = evaluador.nombre_o_grupo
                 maestro = evaluador.evaluado.nombre
-                idtocopy = settings.SURVEYID2COPY
-                newsurvey_name = f"EVALUACIÓN DESEMPEÑO DOCENTE CICLO ESCOLAR 2021-2022 {maestro}, {grupo}"
+                maestro = maestro.title()
+                materia = evaluador.evaluado.materia
+                materia = materia.title()
+                idtocopy = settings.SURVEYID2COPYSTUDENTS
+                newsurvey_name = f" Evaluación de Clase Alumnos {materia} {maestro} Grupo {grupo} Ciclo escolar 2021-2022"
                 result = api.survey.copy_survey(idtocopy, newsurvey_name)
                 evaluador.id_survey = result
                 evaluador.save()

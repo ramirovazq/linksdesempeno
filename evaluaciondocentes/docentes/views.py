@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from docentes.models import Evaluador
+from docentes.models import Evaluador, ProfesorEvaluado
 from django.conf import settings
 
 
@@ -30,3 +30,24 @@ def list(request):
     context['COLLEGE_URL'] = settings.COLLEGE_URL
     context['COLLEGE_INSTRUMENT'] = settings.COLLEGE_INSTRUMENT
     return render(request, 'docentes/list.html', context)
+
+def list_all(request):
+    objetos = ProfesorEvaluado.objects.all()
+
+
+    context = {'objetos': objetos}
+    context['COLLEGE_NAME'] = settings.COLLEGE_NAME
+    context['COLLEGE_URL'] = settings.COLLEGE_URL
+    context['COLLEGE_INSTRUMENT'] = settings.COLLEGE_INSTRUMENT
+    return render(request, 'docentes/profesores.html', context)
+
+def detail_profesor(request, profesor_id):
+    profesor = get_object_or_404(ProfesorEvaluado, pk=profesor_id)
+
+    evaluadores = Evaluador.objects.filter(evaluado=profesor)
+
+    context = {'objeto': profesor, 'objetos': evaluadores }
+    context['COLLEGE_NAME'] = settings.COLLEGE_NAME
+    context['COLLEGE_URL'] = settings.COLLEGE_URL
+    context['COLLEGE_INSTRUMENT'] = settings.COLLEGE_INSTRUMENT
+    return render(request, 'docentes/detail.html', context)
