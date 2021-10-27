@@ -18,7 +18,7 @@ def detail(request, slug_evaluador):
     return render(request, 'docentes/detail.html', context)
 
 def list(request):
-    list_evaluadores = Evaluador.objects.all()
+    list_evaluadores = Evaluador.objects.filter(instrumento_para_alumnos=True)
     memo_list = []
     objetos = []
     for evaluador in list_evaluadores:
@@ -32,7 +32,7 @@ def list(request):
     return render(request, 'docentes/list.html', context)
 
 def list_all(request):
-    objetos = ProfesorEvaluado.objects.all()
+    objetos = ProfesorEvaluado.objects.filter(instrumento_para_alumnos=True)
 
 
     context = {'objetos': objetos}
@@ -51,3 +51,36 @@ def detail_profesor(request, profesor_id):
     context['COLLEGE_URL'] = settings.COLLEGE_URL
     context['COLLEGE_INSTRUMENT'] = settings.COLLEGE_INSTRUMENT
     return render(request, 'docentes/detail.html', context)
+
+
+def list_direccion(request):
+    list_evaluadores = Evaluador.objects.filter(instrumento_para_alumnos=False)
+
+    memo_list = []
+    objetos = []
+    for evaluador in list_evaluadores:
+        if not evaluador.nombre_o_grupo in memo_list:
+            memo_list.append(evaluador.nombre_o_grupo)
+            objetos.append(evaluador)
+
+
+    context = {'objetos': objetos}
+    context['COLLEGE_NAME'] = settings.COLLEGE_NAME
+    context['COLLEGE_URL'] = settings.COLLEGE_URL
+    context['COLLEGE_INSTRUMENT'] = settings.COLLEGE_INSTRUMENT_DIRECCION
+    # return render(request, 'docentes/profesores_direccion.html', context)
+    return render(request, 'docentes/direccion_list.html', context)
+
+
+
+def detail_direccion_evaluador(request, evaluador_id):
+    evaluador = get_object_or_404(Evaluador, pk=evaluador_id)
+
+    #evaluadores = Profesor.objects.filter(evaluador=profesor)
+    objetos = Evaluador.objects.filter(nombre_o_grupo=evaluador.nombre_o_grupo, instrumento_para_alumnos=False)
+
+    context = {'objeto': evaluador, 'objetos': objetos}
+    context['COLLEGE_NAME'] = settings.COLLEGE_NAME
+    context['COLLEGE_URL'] = settings.COLLEGE_URL
+    context['COLLEGE_INSTRUMENT'] = settings.COLLEGE_INSTRUMENT_DIRECCION
+    return render(request, 'docentes/detail_evaluador.html', context)

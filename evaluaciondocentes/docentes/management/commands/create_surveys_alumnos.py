@@ -14,7 +14,7 @@ class Command(BaseCommand):
         api = LimeSurvey(url=settings.URL_API, username=settings.USERNAME_API)
         api.open(password=settings.PASSWORD_API)
 
-        for evaluador in Evaluador.objects.all():
+        for evaluador in Evaluador.objects.filter(instrumento_para_alumnos=True):
             if not evaluador.id_survey:
                 grupo = evaluador.nombre_o_grupo
                 maestro = evaluador.evaluado.nombre

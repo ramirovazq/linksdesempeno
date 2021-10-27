@@ -6,13 +6,14 @@ from django.conf import settings
 import csv
 
 class Command(BaseCommand):
-    help = 'Read docentes file.'
+    help = 'Read docentes file, for students.'
     def handle(self, *args, **options):
 
         base_dir_path = str(settings.BASE_DIR)
         base_dir_path = base_dir_path + '/evaluaciondocentes'
 
         with open(base_dir_path + '/load_init/evaluados-alumnos.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-alumnos_simple.csv') as csvfile_evaluadores:
+      # with open(base_dir_path + '/load_init/evaluados-alumnos_simple.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-alumnos_simple.csv') as csvfile_evaluadores:
             readCSV = csv.reader(csvfile_in, delimiter=';')
             readCSVevaluadores = csv.reader(csvfile_evaluadores, delimiter=';')
 
@@ -32,6 +33,7 @@ class Command(BaseCommand):
                     obj_profesor_evaluado, created = ProfesorEvaluado.objects.get_or_create(
                         nombre=nombre_profesor_evaluado,
                         materia=materia,
+                        instrumento_para_alumnos=True
                     )                    
                     if created:
                         self.stdout.write(self.style.SUCCESS('Successfully created "%s"' % obj_profesor_evaluado))
@@ -44,7 +46,8 @@ class Command(BaseCommand):
                         obj_autoevaluacion, created = Evaluador.objects.get_or_create(
                             nombre_o_grupo = obj_profesor_evaluado.nombre,
                             autoevaluacion=True,
-                            evaluado=obj_profesor_evaluado
+                            evaluado=obj_profesor_evaluado,
+                            instrumento_para_alumnos=True
                         )
                         if created:
                             self.stdout.write(self.style.SUCCESS('Successfully created "%s"' % obj_autoevaluacion))
@@ -58,7 +61,8 @@ class Command(BaseCommand):
                         if col == "x":
                             obj_autoevaluacion, created = Evaluador.objects.get_or_create(
                                 nombre_o_grupo = evaluadores_line[column],
-                                evaluado=obj_profesor_evaluado
+                                evaluado=obj_profesor_evaluado,
+                                instrumento_para_alumnos=True
                             )
                             if created:
                                 self.stdout.write(self.style.SUCCESS('Successfully created "%s"' % obj_autoevaluacion))
