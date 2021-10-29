@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('evaluador/', include('docentes.urls')),
-    path('evaluados/', include('docentes.urls')),
+    #path('evaluador/', include('docentes.urls')),
+    path('alumnos/', include('evaluacionalumnos.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

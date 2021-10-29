@@ -39,9 +39,9 @@
     <div class="p-5 mb-4 bg-light rounded-3">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">{{COLLEGE_INSTRUMENT_PRIMARIA}}</h1>
-        <h2>{{objeto.nombre}}</h2>
+        <h3 >Ciclo escolar 2021-2022</h3>
         <p class="col-md-8 fs-4">
-            {{objeto.materia}}
+            Grupo: {{objeto.grupo}}
         </p>
       </div>
     </div>
@@ -53,17 +53,17 @@
 
           <div class="list-group">
             {% for objeto in objetos %}
-            <label class="list-group-item d-flex gap-3">
+
+            <label class="list-group-item d-flex gap-3">    
               <span class="pt-1 form-checked-content">
-                <strong><a href="{{objeto.url_survey}}">{{objeto.nombre_o_grupo}}</a></strong>
+                <strong><a href="{{objeto.url_survey}}">{{objeto.profesor.nombre}}</a></strong>
                 <small class="d-block text-muted">
-                  {% if objeto.autoevaluacion %}
-                  Autoevaluación
-                  {% endif %}
-                  Materia: {{objeto.evaluado.materia}}
-              </small>
+                  Materia: {{objeto.profesor.materia}} Grupo: {{objeto.grupo}}
+                </small>
               </span>
             </label>
+            
+
             {% endfor %}
           </div>
 
