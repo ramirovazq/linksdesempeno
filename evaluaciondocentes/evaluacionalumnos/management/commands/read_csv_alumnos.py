@@ -20,7 +20,7 @@ class Command(BaseCommand):
             # autoevaluacion 4 
             # evaluador 5 -> 29 
             not_used_rows = [0, 1, 2, 3, 4, 5]
-            columnas_evaluador = list(range(5,30))
+            columnas_evaluador = list(range(5,34))
             rows_for_evaluadores = list(readCSVevaluadores)
             evaluadores_line = rows_for_evaluadores[5]
 
