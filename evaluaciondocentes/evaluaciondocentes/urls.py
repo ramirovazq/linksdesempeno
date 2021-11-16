@@ -22,5 +22,6 @@ urlpatterns = [
     #path('evaluador/', include('docentes.urls')),
     path('alumnos/', include('evaluacionalumnos.urls')),
     path('directivos/', include('evaluaciondirectivos.urls')),
+    path('directivos/kinder/', include('evaluaciondirectivoskinder.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
