@@ -12,7 +12,7 @@ def all_profesors_kinder_evaluate(request):
     context = {'objetos': objetos}
     context['COLLEGE_NAME'] = settings.COLLEGE_NAME
     context['COLLEGE_URL'] = settings.COLLEGE_URL
-    context['COLLEGE_INSTRUMENT_AUTOEVALUACION_KINDER'] = "Evaluación Desempeño Docente equipo directivo kinder"
+    context['COLLEGE_INSTRUMENT_AUTOEVALUACION_KINDER'] = "Evaluación Desempeño Docente equipo directivo kínder"
     return render(request, 'directivos_evalua_kinder/list.html', context)
 
 def all_profesors_kinder_autoreview(request):
