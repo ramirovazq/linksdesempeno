@@ -20,8 +20,7 @@ class Command(BaseCommand):
                 maestro = maestro.title()
                 materia = group.profesor.materia
                 materia = materia.title()
-                #idtocopy = settings.SURVEYIDEVALUACIONALUMNOSAMAESTROS
-                idtocopy = "147957"
+                idtocopy = settings.SURVEYIDEVALUACIONALUMNOSAMAESTROS
                 # newsurvey_name = f"Nombre del Maestro: {maestro} </br> Materia: {materia} </br> Grupo:{group.grupo}"
                 newsurvey_name = f"Bachillerato </br> Maestro: {maestro} </br> Materia: {materia} </br> Grupo:{group.grupo}"
                 result = api.survey.copy_survey(idtocopy, newsurvey_name)

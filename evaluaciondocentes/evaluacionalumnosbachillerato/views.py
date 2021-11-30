@@ -3,7 +3,6 @@ from .models import Profesor, GrupoAlumnos
 from django.conf import settings
 
 def all_groups(request):
-    print("TEST")
     groups = GrupoAlumnos.objects.all()
     memo_list = []
 
