@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from evaluacionalumnos.models import Profesor, GrupoAlumnos
+from evaluacionalumnosbachillerato.models import Profesor, GrupoAlumnos
 from django.conf import settings
 
 
@@ -12,15 +12,15 @@ class Command(BaseCommand):
         base_dir_path = str(settings.BASE_DIR)
         base_dir_path = base_dir_path + '/evaluaciondocentes'
 
-        with open(base_dir_path + '/load_init/evaluados-alumnos_primeros_y_segundos.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-alumnos_primeros_y_segundos.csv') as csvfile_evaluadores:
-        ## with open(base_dir_path + '/load_init/evaluados-alumnos_simple.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-alumnos_simple.csv') as csvfile_evaluadores:
+        ##with open(base_dir_path + '/load_init/evaluados-alumnos-bachillerato.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-alumnos-bachillerato.csv') as csvfile_evaluadores:
+        with open(base_dir_path + '/load_init/evaluados-alumnos-bachillerato_simple.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-alumnos-bachillerato_simple.csv') as csvfile_evaluadores:
             readCSV = csv.reader(csvfile_in, delimiter=';')
             readCSVevaluadores = csv.reader(csvfile_evaluadores, delimiter=';')
 
             # autoevaluacion 4 
             # evaluador 5 -> 29 
             not_used_rows = [0, 1, 2, 3, 4, 5]
-            columnas_evaluador = list(range(5,14))
+            columnas_evaluador = list(range(5,42))
             rows_for_evaluadores = list(readCSVevaluadores)
             evaluadores_line = rows_for_evaluadores[5]
 

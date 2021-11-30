@@ -20,8 +20,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     #path('evaluador/', include('docentes.urls')),
+    path('alumnos/bachillerato/', include('evaluacionalumnosbachillerato.urls')),
+    path('directivos/bachillerato/', include('evaluaciondirectivosbachillerato.urls')),
     path('alumnos/', include('evaluacionalumnos.urls')),
     path('directivos/', include('evaluaciondirectivos.urls')),
     path('directivos/kinder/', include('evaluaciondirectivoskinder.urls')),
     path('admin/', admin.site.urls),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

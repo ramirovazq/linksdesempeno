@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'evaluacionalumnos',
     'evaluaciondirectivos',
     'evaluaciondirectivoskinder',
+    'evaluacionalumnosbachillerato',
+    'evaluaciondirectivosbachillerato',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +126,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT=os.getenv("MEDIA_ROOT", '')
+MEDIA_URL=os.getenv("MEDIA_URL", '')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -149,3 +153,6 @@ SURVEYIDAUTOEVALUACIONDEGRUPOS=os.getenv("SURVEYIDAUTOEVALUACIONDEGRUPOS", None)
 
 SURVEYIDAUTOEVALUACIONDIRECCION=os.getenv("SURVEYIDAUTOEVALUACIONDIRECCION", None)
 SURVEYIDEVALUACIONDIRECCION=os.getenv("SURVEYIDEVALUACIONDIRECCION", None)
+
+COLLEGE_INSTRUMENT_BACHILLERATO=os.getenv("COLLEGE_INSTRUMENT_BACHILLERATO", None)
+COLLEGE_INSTRUMENT_AUTOEVALUACION_BACHILLERATO=os.getenv("COLLEGE_INSTRUMENT_AUTOEVALUACION_BACHILLERATO", None)

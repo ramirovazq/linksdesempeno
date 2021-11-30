@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from evaluacionalumnos.models import GrupoAlumnos, Profesor
+from evaluacionalumnosbachillerato.models import GrupoAlumnos, Profesor
 from django.conf import settings
 from limesurveyrc2api.limesurvey import LimeSurvey
 import time
@@ -21,7 +21,7 @@ class Command(BaseCommand):
                 materia = group.profesor.materia
                 materia = materia.title()
                 idtocopy = settings.SURVEYIDAUTOEVALUACIONDEGRUPOS
-                newsurvey_name = f"Autoevaluación </br> Nombre del Maestro: {maestro} </br> Materia: {materia} </br> Grupo:{group.grupo}"
+                newsurvey_name = f"Autoevaluación Bachillerato </br> Nombre del Maestro: {maestro} </br> Materia: {materia} </br> Grupo:{group.grupo}"
                 result = api.survey.copy_survey(idtocopy, newsurvey_name)
                 if 'newsid' in result:
                     id_survey = result['newsid']

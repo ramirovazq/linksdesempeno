@@ -1,0 +1,91 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="RBVS">
+    <meta name="generator" content="Rbvs">
+    <title>Evaluación de Desempeño Docente - Ciclo Escolar 2021-2022</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+<main>
+  <div class="container py-4">
+    <header class="pb-3 mb-4 border-bottom">
+      <a href="{{COLLEGE_URL}}" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">{{COLLEGE_NAME}}</span>
+      </a>
+    </header>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">{{COLLEGE_INSTRUMENT_BACHILLERATO}}</h1>
+        <h3 >Ciclo escolar 2021-2022</h3>
+        <p class="col-md-8 fs-4">
+            Grupo: {{objeto.grupo}}
+        </p>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-12">
+        {% if objetos %}
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+
+          <div class="list-group">
+            {% for objeto in objetos %}
+
+            <label class="list-group-item d-flex gap-3">    
+              <span class="pt-1 form-checked-content">
+                <strong><a href="{{objeto.url_survey}}">{{objeto.profesor.nombre}}</a></strong> 
+                <a href="{{objeto.qr_survey.url}}" target="_blank" > link a QR</a>
+                <small class="d-block text-muted">
+                  Materia: {{objeto.profesor.materia}} Grupo: {{objeto.grupo}}
+                </small>
+              </span>
+            </label>
+            
+
+            {% endfor %}
+          </div>
+
+        </div>
+        {% else %}
+        <div class="h-100 p-5 rounded-3">
+          <div class="list-group">
+            Sin evaluaciones
+          </div>
+        </div>
+          {% endif %}
+      </div>
+    </div>
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+      &copy; 2021
+    </footer>
+  </div>
+</main>
+
+
+    
+  </body>
+</html>

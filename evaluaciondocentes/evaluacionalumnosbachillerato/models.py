@@ -25,6 +25,7 @@ class GrupoAlumnos(models.Model):
     id_survey = models.CharField(max_length=300, blank=True)
     response_survey = models.TextField(blank=True, null=True)
     response_boolean_survey = models.BooleanField(default=False)
+    qr_survey= models.ImageField(upload_to='qrs/', default="empty", null=True)
     id_survey_profesor_autoevaluacion = models.CharField(max_length=300, blank=True)
     token_profesor_autoevaluacion = models.CharField(max_length=300, blank=True)
     response_boolean_profesor_autoevaluacion = models.BooleanField(default=False)

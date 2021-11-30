@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from evaluacionalumnos.models import GrupoAlumnos
+from evaluacionalumnosbachillerato.models import GrupoAlumnos
 from django.conf import settings
 from limesurveyrc2api.limesurvey import LimeSurvey
 
@@ -20,10 +20,10 @@ class Command(BaseCommand):
                 maestro = maestro.title()
                 materia = group.profesor.materia
                 materia = materia.title()
-                idtocopy = settings.SURVEYIDEVALUACIONALUMNOSAMAESTROS
-                # idtocopy = "147957"
+                #idtocopy = settings.SURVEYIDEVALUACIONALUMNOSAMAESTROS
+                idtocopy = "147957"
                 # newsurvey_name = f"Nombre del Maestro: {maestro} </br> Materia: {materia} </br> Grupo:{group.grupo}"
-                newsurvey_name = f"Maestro: {maestro} </br> Materia: {materia} </br> Grupo:{group.grupo}"
+                newsurvey_name = f"Bachillerato </br> Maestro: {maestro} </br> Materia: {materia} </br> Grupo:{group.grupo}"
                 result = api.survey.copy_survey(idtocopy, newsurvey_name)
                 if 'newsid' in result:
                     id_survey = result['newsid']

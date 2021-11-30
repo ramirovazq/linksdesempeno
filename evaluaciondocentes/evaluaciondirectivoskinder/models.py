@@ -8,6 +8,8 @@ class Profesor(models.Model):
     autoevaluacion = models.BooleanField(default=False)
     id_survey_profesor_autoevaluacion = models.CharField(max_length=300, blank=True)
     token_profesor_autoevaluacion = models.CharField(max_length=300, blank=True)
+    response_boolean_profesor_autoevaluacion = models.BooleanField(default=False)
+    response_profesor_autoevaluacion = models.TextField(blank=True, null=True)
 
 
     def __str__(self):
@@ -24,6 +26,9 @@ class EquipoDirectivo(models.Model):
     nombre = models.CharField(max_length=300)
     profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
     id_survey = models.CharField(max_length=300, blank=True)
+    response_survey = models.TextField(blank=True, null=True)
+    response_boolean_survey = models.BooleanField(default=False)
+
 
     def __str__(self):
         return f"nombre: {self.nombre}, profesor {self.profesor}"

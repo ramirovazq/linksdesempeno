@@ -1,28 +1,28 @@
 from django.core.management.base import BaseCommand
-from evaluacionalumnos.models import Profesor, GrupoAlumnos
+from evaluaciondirectivosbachillerato.models import Profesor, EquipoDirectivo
 from django.conf import settings
 
 
 import csv
 
 class Command(BaseCommand):
-    help = 'Read alumnos file.'
+    help = 'Read csv directivos file.'
     def handle(self, *args, **options):
 
         base_dir_path = str(settings.BASE_DIR)
         base_dir_path = base_dir_path + '/evaluaciondocentes'
 
-        with open(base_dir_path + '/load_init/evaluados-alumnos_primeros_y_segundos.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-alumnos_primeros_y_segundos.csv') as csvfile_evaluadores:
-        ## with open(base_dir_path + '/load_init/evaluados-alumnos_simple.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-alumnos_simple.csv') as csvfile_evaluadores:
+        # with open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato.csv') as csvfile_evaluadores:
+        with open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato_simple.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato_simple.csv') as csvfile_evaluadores:
             readCSV = csv.reader(csvfile_in, delimiter=';')
             readCSVevaluadores = csv.reader(csvfile_evaluadores, delimiter=';')
 
             # autoevaluacion 4 
             # evaluador 5 -> 29 
-            not_used_rows = [0, 1, 2, 3, 4, 5]
-            columnas_evaluador = list(range(5,14))
+            not_used_rows = [0, 1, 2, 3, 4, 5, 6]
+            columnas_evaluador = list(range(5,6))
             rows_for_evaluadores = list(readCSVevaluadores)
-            evaluadores_line = rows_for_evaluadores[5]
+            evaluadores_line = rows_for_evaluadores[6]
 
             for indice, row in enumerate(readCSV):
                 if indice not in not_used_rows: # quit headers
@@ -49,12 +49,12 @@ class Command(BaseCommand):
                         self.stdout.write(self.style.WARNING ('Already exists "%s"' % obj_profesor_evaluado))
 
 
-                    # Grupos
+                    # EquipoDirectivo
                     for column in columnas_evaluador:
                         col = row[column].lower()
                         if col == "x":
-                            obj_gpo, created = GrupoAlumnos.objects.get_or_create(
-                                grupo = evaluadores_line[column],
+                            obj_gpo, created = EquipoDirectivo.objects.get_or_create(
+                                nombre = evaluadores_line[column],
                                 profesor=obj_profesor_evaluado,
                             )
                             if created:
