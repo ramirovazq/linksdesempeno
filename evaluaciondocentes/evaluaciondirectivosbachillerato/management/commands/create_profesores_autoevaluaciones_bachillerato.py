@@ -15,7 +15,7 @@ class Command(BaseCommand):
         api.open(password=settings.PASSWORD_API)
 
         for profesor in Profesor.objects.filter(autoevaluacion=True):
-            if not profesor.id_survey_profesor_autoevaluacion:
+            if not profesor.id_survey_profesor_autoevaluacion and not profesor.id_survey_profesor_autoevaluacion:
                 maestro = profesor.nombre
                 maestro = maestro.title()
                 materia = profesor.materia
@@ -30,31 +30,31 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.SUCCESS(f'Success saving survey {id_survey} {profesor}'))
                 else:
                     self.stdout.write(self.style.ERROR(f'Error copiando survey, result: {result}'))                
-            else:
-                self.stdout.write(self.style.WARNING ('Already exists %s' % (profesor.id_survey_profesor_autoevaluacion)))
+            #else:
+             #   self.stdout.write(self.style.WARNING ('Already exists %s' % (profesor.id_survey_profesor_autoevaluacion)))
 
         time.sleep(2)
         #activate token survey
         for profesor in Profesor.objects.filter(autoevaluacion=True):
-            if profesor.id_survey_profesor_autoevaluacion:
+            if profesor.id_survey_profesor_autoevaluacion and not profesor.token_profesor_autoevaluacion:
                 result = api.survey.activate_survey(profesor.id_survey_profesor_autoevaluacion)
                 self.stdout.write(self.style.WARNING('Activate survey "%s"' % result))
-            else:
-                self.stdout.write(self.style.ERROR('Does not have survey id '))
+            #else:
+             #   self.stdout.write(self.style.ERROR('Does not have survey id '))
 
         time.sleep(2)
         #activate token survey
         for profesor in Profesor.objects.filter(autoevaluacion=True):
-            if profesor.id_survey_profesor_autoevaluacion:
+            if profesor.id_survey_profesor_autoevaluacion and not profesor.token_profesor_autoevaluacion:
                 result = api.survey.activate_tokens(profesor.id_survey_profesor_autoevaluacion)
                 self.stdout.write(self.style.WARNING('Activating restricted surkey with tokens: "%s"' % result))
-            else:
-                self.stdout.write(self.style.ERROR('Does not have survey id '))
+            #else:
+             #   self.stdout.write(self.style.ERROR('Does not have survey id '))
 
         time.sleep(4)
         #create tokens
         profesores = Profesor.objects.filter(autoevaluacion=True)
-        for profesor in profesores:
+        for profesor in profesores and not profesor.token_profesor_autoevaluacion:
             participant_data = []
 
             email = f"{profesor.id}@example.com"

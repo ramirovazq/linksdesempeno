@@ -12,8 +12,8 @@ class Command(BaseCommand):
         base_dir_path = str(settings.BASE_DIR)
         base_dir_path = base_dir_path + '/evaluaciondocentes'
 
-        # with open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato.csv') as csvfile_evaluadores:
-        with open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato_simple.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato_simple.csv') as csvfile_evaluadores:
+        with open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato.csv') as csvfile_evaluadores:
+        # with open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato_simple.csv') as csvfile_in, open(base_dir_path + '/load_init/evaluados-equipo-de-direccion-bachillerato_simple.csv') as csvfile_evaluadores:
             readCSV = csv.reader(csvfile_in, delimiter=';')
             readCSVevaluadores = csv.reader(csvfile_evaluadores, delimiter=';')
 
