@@ -57,14 +57,19 @@
             <label class="list-group-item d-flex gap-3">    
               <span class="pt-1 form-checked-content">
                 <strong>
-                  {% if objeto.autoevaluacion %}
-                  <a target="_blank"  href="{{objeto.url_survey_token}}">
-                    Materia: {{objeto.materia}} </a>
-                  {% else %} 
-                  <a target="_blank"  href="{{objeto.url_survey}}">
-                    Materia: {{objeto.materia}} </a>
+                  {% if objeto.survey_closed %}
+                  
+                    Materia: {{objeto.materia}}
+                  {% else %}
+                      {% if objeto.autoevaluacion %}
+                      <a target="_blank"  href="{{objeto.url_survey_token}}">
+                        Materia: {{objeto.materia}} </a>
+                      {% else %} 
+                      <a target="_blank"  href="{{objeto.url_survey}}">
+                        Materia: {{objeto.materia}} </a>
+                      {% endif %}
                   {% endif %}
-                </strong>
+                  </strong>
                 <small class="d-block text-muted">
                   {% if objeto.autoevaluacion %}   
                     Autoevaluación

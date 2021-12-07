@@ -41,3 +41,5 @@ python manage.py create_directivos_evaluaciones_kinder
 
 python manage.py get_response_directivos_evaluaciones_kinder
 python manage.py get_response_profesores_autoevaluaciones_kinder
+
+python manage.py close_surveys

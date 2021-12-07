@@ -10,6 +10,7 @@ class Profesor(models.Model):
     token_profesor_autoevaluacion = models.CharField(max_length=300, blank=True)
     response_boolean_profesor_autoevaluacion = models.BooleanField(default=False)
     response_profesor_autoevaluacion = models.TextField(blank=True, null=True)
+    survey_closed = models.BooleanField(default=False)
 
 
     def __str__(self):
@@ -28,7 +29,7 @@ class EquipoDirectivo(models.Model):
     id_survey = models.CharField(max_length=300, blank=True)
     response_survey = models.TextField(blank=True, null=True)
     response_boolean_survey = models.BooleanField(default=False)
-
+    survey_closed = models.BooleanField(default=False)
 
     def __str__(self):
         return f"nombre: {self.nombre}, profesor {self.profesor}"
